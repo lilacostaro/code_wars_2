@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div>
+        <h1 class="col-6" style="display: inline-grid">Funcionarios</h1>
+        <a href="{% url 'add_employee' %}">
+            <button type="button" class="btn btn-secondary col-5">Add Funcionario</button>
+        </a>
+    </div>
+    <br>
+
+    <fieldset>
+        <legend>Lista de Funcionarios da Compania</legend>
+        <div class="col-12" style="display: grid">
+        <br>
+            {% if employees_list %}
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="table-secondary">
+                        <th class="col-9">Employee Name</th>
+                        <th class="col-3">View Info</th>
+                    </tr>
+                </thead>
+            </table>
+                {% for employee in employees_list %}
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <td class="col-10">{{ employee.nome }}</td>
+                        <td class="col-2"><a href="{% url 'employee_info' employee.matricula %}" style="align-self: center"><i class="fas fa-book" style="align-self: center"></i></a></td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+            <h1 class="col-6" style="display: inline-grid">Ultima Matricula: {{ ultima_matricula }}</h1>
+            <h1 class="col-6" style="display: inline-grid">Nova Matricula: {{ nova_matricula }}</h1>
+            {% else %}
+                <p>No Employees are available.</p>
+            {% endif %}
+        </div>
+    </fieldset>
+    <br>
+    <fieldset>
+
+{% endblock %}

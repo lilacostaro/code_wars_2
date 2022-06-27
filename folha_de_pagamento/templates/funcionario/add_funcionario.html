@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Registro de Funcionario{% endblock %}
+
+{% block content %}
+<di class="offset-1 col-8">
+    <h1>Registre um novo Funcionario</h1>
+    <form method="POST">{% csrf_token %}
+        {{ form1|crispy }}
+        <input type='submit' class="col-12 btn btn-secondary" value="Register Employee">
+    </form>
+</di>
+{% endblock %}
